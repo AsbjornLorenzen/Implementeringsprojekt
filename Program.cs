@@ -1,2 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿namespace HashFunctions {
+    public class Program {
+        //public Hashing hasher;
+        static void Main(string[] args) {
+            var hasher = new Hashing();
+            hasher.MultiplyShiftHash();
+        }
+    }
+}

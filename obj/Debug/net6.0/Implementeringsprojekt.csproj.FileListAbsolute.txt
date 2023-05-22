@@ -1,0 +1,15 @@
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/bin/Debug/net6.0/Implementeringsprojekt
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/bin/Debug/net6.0/Implementeringsprojekt.deps.json
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/bin/Debug/net6.0/Implementeringsprojekt.runtimeconfig.json
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/bin/Debug/net6.0/Implementeringsprojekt.dll
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/bin/Debug/net6.0/ref/Implementeringsprojekt.dll
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/bin/Debug/net6.0/Implementeringsprojekt.pdb
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/obj/Debug/net6.0/Implementeringsprojekt.csproj.AssemblyReference.cache
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/obj/Debug/net6.0/Implementeringsprojekt.GeneratedMSBuildEditorConfig.editorconfig
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/obj/Debug/net6.0/Implementeringsprojekt.AssemblyInfoInputs.cache
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/obj/Debug/net6.0/Implementeringsprojekt.AssemblyInfo.cs
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/obj/Debug/net6.0/Implementeringsprojekt.csproj.CoreCompileInputs.cache
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/obj/Debug/net6.0/Implementeringsprojekt.dll
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/obj/Debug/net6.0/ref/Implementeringsprojekt.dll
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/obj/Debug/net6.0/Implementeringsprojekt.pdb
+/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/obj/Debug/net6.0/Implementeringsprojekt.genruntimeconfig.cache

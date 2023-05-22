@@ -3,7 +3,8 @@
         //public Hashing hasher;
         static void Main(string[] args) {
             var hasher = new Hashing();
-            hasher.MultiplyShiftHash();
+            long a = hasher.MultiplyShiftHash(1);
+            Console.WriteLine(a);
         }
     }
 }

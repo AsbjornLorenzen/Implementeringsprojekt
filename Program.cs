@@ -6,6 +6,7 @@
             long a = hasher.MultiplyShiftHash(1);
             Console.WriteLine(a);
             hasher.MultiplyModPrime(5);
+            hasher.CompareRunningTime(10000000);
         }
     }
 }

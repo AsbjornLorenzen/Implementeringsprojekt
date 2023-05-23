@@ -6,13 +6,10 @@ namespace HashFunctions {
     public class Hashing {
         Int64 a;
         BigInteger a_mod, b_mod, p;
-        int l;
         public Hashing () {
             // Init values for multiplyshifthash:
             string a_binaryString = "0011101110011000101010101000110101000011111011010010000111010011";
             this.a = Convert.ToInt64(a_binaryString, 2);
-            this.l = 63;
-            Debug.Assert(this.l < 64,"l must be less than 64");
             Debug.Assert(this.a % 2 == 1,"a must be an odd number");
 
             // Init values for multiplymodprime:
@@ -25,12 +22,12 @@ namespace HashFunctions {
             Debug.Assert(this.b_mod < this.p);
         }
 
-        public Int64 MultiplyShiftHash (Int64 x) {
-            int shiftAmount = 64 - this.l;
+        public Int64 MultiplyShiftHash (Int64 x, int l) {
+            int shiftAmount = 64 - l;
             return ((this.a * x) >> shiftAmount);
         }
 
-        public BigInteger MultiplyModPrime (BigInteger x) {
+        public BigInteger MultiplyModPrime (BigInteger x, int l) {
             BigInteger t,y;
             Debug.Assert(x < (BigInteger) 1 << 179 - 2);
 
@@ -42,7 +39,7 @@ namespace HashFunctions {
             }
 
             // Efficient mod 2^l
-            int bitmask = (1 << (this.l + 1)) - 1;
+            int bitmask = (1 << (l + 1)) - 1;
             return y & bitmask;
         }
 
@@ -58,7 +55,7 @@ namespace HashFunctions {
 
             foreach (var tuple in Stream.CreateStream(n,l)) {
                 long x = (long) tuple.Item1;
-                sum += MultiplyShiftHash(x);
+                sum += MultiplyShiftHash(x,20);
             }
 
             stopwatch.Stop();
@@ -68,7 +65,7 @@ namespace HashFunctions {
 
             foreach (var tuple in Stream.CreateStream(n,l)) {
                 long x = (long) tuple.Item1;
-                sum += MultiplyModPrime(x);
+                sum += MultiplyModPrime(x,20);
             }
 
             stopwatch.Stop();

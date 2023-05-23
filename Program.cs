@@ -5,6 +5,7 @@
             var hasher = new Hashing();
             long a = hasher.MultiplyShiftHash(1);
             Console.WriteLine(a);
+            hasher.MultiplyModPrime(5);
         }
     }
 }

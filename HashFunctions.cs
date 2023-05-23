@@ -4,7 +4,7 @@ using System.Numerics;
 namespace HashFunctions {
     // Skal vores hashing funktioner kun tage unsigned, eller også signed integers?
     public class Hashing {
-        Int64 a;
+        long a;
         BigInteger a_mod, b_mod, p;
         public Hashing () {
             // Init values for multiplyshifthash:
@@ -22,12 +22,12 @@ namespace HashFunctions {
             Debug.Assert(this.b_mod < this.p);
         }
 
-        public Int64 MultiplyShiftHash (Int64 x, int l) {
-            int shiftAmount = 64 - l;
+        public long MultiplyShiftHash (long x, uint l) {
+            int shiftAmount = 64 - (int) l;
             return ((this.a * x) >> shiftAmount);
         }
 
-        public BigInteger MultiplyModPrime (BigInteger x, int l) {
+        public ulong MultiplyModPrime (BigInteger x, uint l) {
             BigInteger t,y;
             Debug.Assert(x < (BigInteger) 1 << 179 - 2);
 
@@ -39,8 +39,8 @@ namespace HashFunctions {
             }
 
             // Efficient mod 2^l
-            int bitmask = (1 << (l + 1)) - 1;
-            return y & bitmask;
+            uint bitmask = (uint) (1UL << ((int) l + 1)) - 1;
+            return (ulong) (y & bitmask);
         }
 
         // n is amount of values to be hashed

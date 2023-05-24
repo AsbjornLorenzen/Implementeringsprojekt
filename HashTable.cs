@@ -10,8 +10,8 @@ namespace HashFunctions {
         LinkedList<keyval>[] table;
         Hashing hasher;
         long size;
-        uint l;
-        public HashTable(uint l) {
+        int l;
+        public HashTable(int l) {
             //Create array for all lists
             this.l = l;
             this.size = 1 << (int) (l + 1);

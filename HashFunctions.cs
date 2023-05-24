@@ -22,12 +22,12 @@ namespace HashFunctions {
             Debug.Assert(this.b_mod < this.p);
         }
 
-        public ulong MultiplyShiftHash (ulong x, uint l) {
+        public ulong MultiplyShiftHash (ulong x, int l) {
             int shiftAmount = 64 - (int) l;
             return ((this.a * x) >> shiftAmount);
         }
 
-        public ulong MultiplyModPrime (ulong x, uint l) {
+        public ulong MultiplyModPrime (ulong x, int l) {
             BigInteger t,y;
             Debug.Assert(x < (BigInteger) 1 << 179 - 2);
 
@@ -55,7 +55,7 @@ namespace HashFunctions {
 
             foreach (var tuple in Stream.CreateStream(n,l)) {
                 ulong x = tuple.Item1;
-                sum += MultiplyShiftHash(x,20);
+                sum += MultiplyShiftHash(x,l);
             }
 
             stopwatch.Stop();
@@ -65,7 +65,7 @@ namespace HashFunctions {
 
             foreach (var tuple in Stream.CreateStream(n,l)) {
                 ulong x = tuple.Item1;
-                sum += MultiplyModPrime(x,20);
+                sum += MultiplyModPrime(x,l);
             }
 
             stopwatch.Stop();

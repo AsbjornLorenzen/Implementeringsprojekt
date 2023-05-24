@@ -4,12 +4,12 @@ using System.Numerics;
 namespace HashFunctions {
     // Skal vores hashing funktioner kun tage unsigned, eller også signed integers?
     public class Hashing {
-        long a;
+        ulong a;
         BigInteger a_mod, b_mod, p;
         public Hashing () {
             // Init values for multiplyshifthash:
             string a_binaryString = "0011101110011000101010101000110101000011111011010010000111010011";
-            this.a = Convert.ToInt64(a_binaryString, 2);
+            this.a = Convert.ToUInt64(a_binaryString, 2);
             Debug.Assert(this.a % 2 == 1,"a must be an odd number");
 
             // Init values for multiplymodprime:
@@ -22,12 +22,12 @@ namespace HashFunctions {
             Debug.Assert(this.b_mod < this.p);
         }
 
-        public long MultiplyShiftHash (long x, uint l) {
+        public ulong MultiplyShiftHash (ulong x, uint l) {
             int shiftAmount = 64 - (int) l;
             return ((this.a * x) >> shiftAmount);
         }
 
-        public ulong MultiplyModPrime (BigInteger x, uint l) {
+        public ulong MultiplyModPrime (ulong x, uint l) {
             BigInteger t,y;
             Debug.Assert(x < (BigInteger) 1 << 179 - 2);
 
@@ -54,7 +54,7 @@ namespace HashFunctions {
             stopwatch.Start();
 
             foreach (var tuple in Stream.CreateStream(n,l)) {
-                long x = (long) tuple.Item1;
+                ulong x = tuple.Item1;
                 sum += MultiplyShiftHash(x,20);
             }
 
@@ -64,7 +64,7 @@ namespace HashFunctions {
             stopwatch.Restart();
 
             foreach (var tuple in Stream.CreateStream(n,l)) {
-                long x = (long) tuple.Item1;
+                ulong x = tuple.Item1;
                 sum += MultiplyModPrime(x,20);
             }
 

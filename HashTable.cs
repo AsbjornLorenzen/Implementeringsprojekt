@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Numerics;
 
 namespace HashFunctions {
-    using keyval = Tuple <BigInteger,long>;
+    using keyval = Tuple <ulong,long>;
+    // Keys to the hashtables (x) are ulong, but d (weight) is long, so can be negative
     
     public class HashTable {
         LinkedList<keyval>[] table;
@@ -23,7 +24,7 @@ namespace HashFunctions {
             }
         }
         
-        public long get(BigInteger x) {
+        public long get(ulong x) {
             ulong key = this.hasher.MultiplyModPrime(x,this.l);
             foreach (var val in this.table[key]) {
                 if (val.Item1 == x) {
@@ -33,7 +34,7 @@ namespace HashFunctions {
             return 0;
         }
 
-        public void set(BigInteger x, long v){
+        public void set(ulong x, long v){
             ulong key = this.hasher.MultiplyModPrime(x,this.l);
             keyval tuple = new keyval(x,v);
             
@@ -47,7 +48,7 @@ namespace HashFunctions {
             this.table[key].AddFirst(tuple);
         }
 
-        public void increment(BigInteger x, long d){
+        public void increment(ulong x, long d){
             ulong key = this.hasher.MultiplyModPrime(x,this.l);
             keyval newTuple = new keyval(x,d);
 

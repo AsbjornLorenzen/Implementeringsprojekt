@@ -28,9 +28,12 @@ namespace HashFunctions {
             // d.GetSquaredSum();
 
             // Test polynomial hash:
-            ulong x = 119822238478;
+            ulong x = 119822238477;
             BigInteger k = hasher.PolynomialHash(x);
             Console.WriteLine("Hashed {0} to {1} using polynomial hashing",x,k);
+
+            Tuple<ulong,int> hs = hasher.TwoHashFunctions(k,20);
+            Console.WriteLine("Hashed with two hashfunction and got {0}",hs);
 
         }
     }

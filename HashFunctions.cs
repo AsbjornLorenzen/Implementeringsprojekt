@@ -89,6 +89,17 @@ namespace HashFunctions {
             return y;
         }
 
+        public Tuple<ulong,int> TwoHashFunctions (BigInteger g,int t) {
+            // t is size of universe, where 2^t is number of distinct values. t <= 64
+            ulong k = ((ulong) 1 << t);
+            ulong h = (ulong) (g & (k-1));
+            int b = (int) (g >> 88);
+            Debug.Assert((b == 0) || (b == 1));
+            int s = 1 - 2 * (int) b;
+
+            return new Tuple<ulong, int>(h,s);
+        }
+
         // n is amount of values to be hashed
         public void CompareRunningTime (int n) {
             BigInteger sum = 0;

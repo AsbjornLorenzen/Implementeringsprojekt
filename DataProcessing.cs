@@ -12,7 +12,7 @@ namespace HashFunctions {
         Stopwatch stopwatch;
         // n is amount of keys to run, l is size of universe
         public DataProcessing(int n,int l,Hashfunction f) {
-            this.universeSize = (ulong) (1 << (l + 1));
+            this.universeSize = (ulong) (1 << l);
             this.n = n;
             this.l = l;
             this.f = f;

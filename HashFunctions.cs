@@ -81,21 +81,11 @@ namespace HashFunctions {
             // calculates a0 + a1x + a2x^2 + a3x^3 efficiently using Horner's rule
             BigInteger bigx = new BigInteger(x);
             BigInteger y = this.a_arr[3];
-            Console.WriteLine("Initial y={0},x={1}",y,bigx);
-            Console.WriteLine("A values are: {0} {1} {2} {3}",this.a_arr[0],this.a_arr[1],this.a_arr[2],this.a_arr[3]);
             for (int i = 2; i>=0; i--) {
-                Console.WriteLine("Y={0} at i={1}",y,i);
                 y = y * bigx + this.a_arr[i];
-                Console.WriteLine("Y={0} at i={1}",y,i);
-                Console.WriteLine("y, p: {0}    {1}",y.ToString("X"),p.ToString("X"));
-                BigInteger c1 = (y & this.p);
-                BigInteger c2 = (y >> 89);
-                Console.WriteLine("     c1,c2: {0}  {1}",c1.ToString("X"),c2.ToString("X"));
-                y = c1 + c2;
-                Console.WriteLine("Y={0} at i={1}, p={2}, &={3}, shift={4}",y,i,this.p,(y & this.p),(y >> 89));
+                y = (y & this.p) + (y >> 89);
             }
             if (y >= this.p) {y -= this.p;}
-            Console.WriteLine("Y={0} when about to return",y);
             return y;
         }
 

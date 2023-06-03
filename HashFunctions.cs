@@ -72,7 +72,7 @@ namespace HashFunctions {
             }
 
             // Efficient mod 2^l
-            uint bitmask = (uint) (1UL << ((int) l + 1)) - 1;
+            uint bitmask = (uint) (1UL << (int) l) - 1;
             return (ulong) (y & bitmask);
         }
 

@@ -1,5 +1,7 @@
 ﻿using System.Numerics;
 
+using System.Collections.Generic;
+
 namespace HashFunctions {
     public class Program {
         //public Hashing hasher;
@@ -35,15 +37,17 @@ namespace HashFunctions {
             //int t = 20;
             //Tuple<ulong,int> hs = hasher.TwoHashFunctions(k,t);
             //Console.WriteLine("Hashed with two hashfunction and got {0}",hs);
+            
+            int n=100;
+            int t=20;
 
-
+            // Save the stream
+            LinkedList<(ulong,int)> savedStream = new LinkedList<(ulong,int)>();
             foreach (var tuple in Stream.CreateStream(n, t)) {
-                    ulong x = tuple.Item1;
-                    long d = tuple.Item2;
-                    
-                }
+                savedStream.AddFirst((tuple.Item1,tuple.Item2));
+            }
 
-            var count = new CountSketch();
+            var count = new CountSketch(savedStream,t);
             long[] test = count.CS();
             BigInteger big = count.estimateSquaredSum(test);
             Console.WriteLine("Got estimated squared sum: {0}", big);

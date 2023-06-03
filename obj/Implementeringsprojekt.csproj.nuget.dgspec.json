@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/Implementeringsprojekt.csproj": {}
+    "/Users/andreaset/Datalogi/RAD/Implementeringsprojekt/Implementeringsprojekt.csproj": {}
   },
   "projects": {
-    "/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/Implementeringsprojekt.csproj": {
+    "/Users/andreaset/Datalogi/RAD/Implementeringsprojekt/Implementeringsprojekt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/Implementeringsprojekt.csproj",
+        "projectUniqueName": "/Users/andreaset/Datalogi/RAD/Implementeringsprojekt/Implementeringsprojekt.csproj",
         "projectName": "Implementeringsprojekt",
-        "projectPath": "/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/Implementeringsprojekt.csproj",
-        "packagesPath": "/Users/asbjorn/.nuget/packages/",
-        "outputPath": "/Users/asbjorn/Datalogi/rad/Implementeringsprojekt/obj/",
+        "projectPath": "/Users/andreaset/Datalogi/RAD/Implementeringsprojekt/Implementeringsprojekt.csproj",
+        "packagesPath": "/Users/andreaset/.nuget/packages/",
+        "outputPath": "/Users/andreaset/Datalogi/RAD/Implementeringsprojekt/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/asbjorn/.nuget/NuGet/NuGet.Config"
+          "/Users/andreaset/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -52,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }

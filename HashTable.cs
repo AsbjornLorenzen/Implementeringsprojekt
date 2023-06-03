@@ -18,7 +18,7 @@ namespace HashFunctions {
         public HashTable(int l, Hashfunction f) {
             //Create array for all lists
             this.l = l;
-            this.size = 1 << (l + 1);
+            this.size = 1 << l;
             this.hasher = new Hashing();
             this.table = new LinkedList<keyval>[size];
             this.f = f;

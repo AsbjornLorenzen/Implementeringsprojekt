@@ -24,16 +24,29 @@ namespace HashFunctions {
             // Console.WriteLine("Read x: {0} y: {1} z: {2}",x,y,z);
 
             // Test sum of squares:
-            // DataProcessing d = new DataProcessing(4000000,20,Hashfunction.multiplymodprime);
-            // d.GetSquaredSum();
+            DataProcessing d = new DataProcessing(5000000,22,Hashfunction.multiplymodprime);
+            d.GetSquaredSum();
 
             // Test polynomial hash:
-            ulong x = 119822238477;
-            BigInteger k = hasher.PolynomialHash(x);
-            Console.WriteLine("Hashed {0} to {1} using polynomial hashing",x,k);
+            //ulong x = 119822238477;
+            //BigInteger k = hasher.PolynomialHash(x);
+            //Console.WriteLine("Hashed {0} to {1} using polynomial hashing",x,k);
 
-            Tuple<ulong,int> hs = hasher.TwoHashFunctions(k,20);
-            Console.WriteLine("Hashed with two hashfunction and got {0}",hs);
+            //int t = 20;
+            //Tuple<ulong,int> hs = hasher.TwoHashFunctions(k,t);
+            //Console.WriteLine("Hashed with two hashfunction and got {0}",hs);
+
+
+            foreach (var tuple in Stream.CreateStream(n, t)) {
+                    ulong x = tuple.Item1;
+                    long d = tuple.Item2;
+                    
+                }
+
+            var count = new CountSketch();
+            long[] test = count.CS();
+            BigInteger big = count.estimateSquaredSum(test);
+            Console.WriteLine("Got estimated squared sum: {0}", big);
 
         }
     }

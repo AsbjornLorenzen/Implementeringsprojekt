@@ -6,15 +6,14 @@ namespace HashFunctions {
         
         LinkedList<(ulong,int)> stream;
         int t;
-        public CountSketch(LinkedList<(ulong,int)> staticStream, int t) {
+        Hashing hasher;
+        public CountSketch(LinkedList<(ulong,int)> staticStream, int t, Hashing givenHasher) {
             this.stream = staticStream;
             this.t = t;
+            this.hasher = givenHasher;
         }
 
         public long[] CS() {
-
-            var hasher = new Hashing();
-
 
             //Initialize the counter array with 2^t = m size
             long[] C = new long[(1 << t)];
@@ -23,8 +22,8 @@ namespace HashFunctions {
                 ulong x = tuple.Item1;
                 long d = tuple.Item2;
 
-                BigInteger k = hasher.PolynomialHash(x);
-                (ulong h, int s) = hasher.TwoHashFunctions(k, this.t);
+                BigInteger k = this.hasher.PolynomialHash(x);
+                (ulong h, int s) = this.hasher.TwoHashFunctions(k, this.t);
                 C[h] += d * s;
             }
             

@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Numerics;
+using System.Text;
 
 namespace HashFunctions {
     // Skal vores hashing funktioner kun tage unsigned, eller også signed integers?
@@ -7,6 +8,8 @@ namespace HashFunctions {
         ulong a;
         BigInteger a_mod, b_mod, p, a0, a1, a2, a3;
         BigInteger[] a_arr;
+        int currentRandomUpdate;
+        byte[] randomBytes;
 
         public Hashing () {
             // Init values for multiplyshifthash:
@@ -31,7 +34,46 @@ namespace HashFunctions {
             this.a3 = new BigInteger(a3_bytes, isUnsigned: true);
             this.a_arr = new BigInteger[] {this.a0,this.a1,this.a2,this.a3};
 
+            this.loadRandomBytes();
+
+            this.currentRandomUpdate = 0;
+
             testInitialization();
+        }
+        public void restartRandomUpdate(){
+            this.currentRandomUpdate = 0;
+        }
+
+        private void loadRandomBytes(){
+            byte[] ranB = new byte[4800];
+            string text = File.ReadAllText("randomBits.txt");
+            //Console.WriteLine(text[0..100]);(32+15+3)
+            int bn = 0;
+            for (int i = 0; i < 300; i++){
+                int c = (32+17)*i; //read from line i
+                for (int j = 0; j < 16; j++) {
+                    ranB[bn] = Convert.ToByte(text[c..(c+2)],16);
+                    bn += 1; // increment byte to update
+                    c += 3; // for skipping to next hex string and over space
+                }
+            }
+            this.randomBytes = ranB;
+            Console.WriteLine("loaded random bytes");
+        }
+
+        public void updateRandomFourUniversal(){
+            int r = this.currentRandomUpdate*47;
+            byte[] a0_bytes = this.randomBytes[r..(r+12)];
+            byte[] a1_bytes = this.randomBytes[(r+12)..(r+24)];
+            byte[] a2_bytes = this.randomBytes[(r+24)..(r+36)];
+            byte[] a3_bytes = this.randomBytes[(r+36)..(r+47)];
+            this.a0 = new BigInteger(a0_bytes, isUnsigned: true);
+            this.a1 = new BigInteger(a1_bytes, isUnsigned: true);
+            this.a2 = new BigInteger(a2_bytes, isUnsigned: true);
+            this.a3 = new BigInteger(a3_bytes, isUnsigned: true);
+            this.a_arr = new BigInteger[] {this.a0,this.a1,this.a2,this.a3};
+            //Console.WriteLine(this.a_arr[0]);
+            this.currentRandomUpdate += 1;//update currentRandomUpdate level
         }
 
         private void testInitialization () {

@@ -10,8 +10,10 @@ namespace HashFunctions {
         HashTable table;
         Hashing hasher;
         Stopwatch stopwatch;
+        LinkedList<(ulong,int)> stream;
         // n is amount of keys to run, l is size of universe
-        public DataProcessing(int n,int l,Hashfunction f) {
+        public DataProcessing(int n,int l,Hashfunction f, LinkedList<(ulong,int)> savedStream) {
+            this.stream = savedStream;
             this.universeSize = (ulong) (1 << l);
             this.n = n;
             this.l = l;
@@ -25,14 +27,14 @@ namespace HashFunctions {
 
         // Streams elements and inserts them to hash table
         private void FillHashTable () {
-            foreach (Tuple<ulong,int> tuple in Stream.CreateStream(this.n,this.l)) {
+            foreach (var tuple in this.stream) {
                 ulong x = tuple.Item1;
                 long d = tuple.Item2;
                 this.table.increment(x,d);
             }
         }
 
-        public void GetSquaredSum () {
+        public BigInteger GetSquaredSum () {
             Console.WriteLine("Getting squared sum using {0}. Filling hash table...",this.f);
             stopwatch.Start();
             FillHashTable();
@@ -49,6 +51,7 @@ namespace HashFunctions {
             }
             stopwatch.Stop();
             Console.WriteLine("Computed sum in {0}ms. \n Sum was {1}. Params: l={2}, universeSize={4}, n={3}",stopwatch.ElapsedMilliseconds,sum,this.l,this.n,this.universeSize);
+            return sum;
         }
     }
 }

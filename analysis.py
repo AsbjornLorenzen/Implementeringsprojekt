@@ -28,12 +28,16 @@ for filenr,file in enumerate(['estimates1.json','estimates2.json','estimates3.js
     for element in array:
         mse += (element-trueSum)**2/array.shape[0]
     print("mse:",mse)
+    print("mean:", np.mean(array))
     print("the variance of the estimator: ",2*trueSum**2/(2**t))
     print("average time in ms: ", np.mean(results['times']))
+    print("true sum:", trueSum)
+    print("S - mean: ", trueSum-np.mean(array))
+
 
 
     #plot params
-    size = (6,4)
+    size = (7,4)
     ymin = [13200000,13190000,13150000]
     ymax = [13240000,13260000,13350000]
     lin = np.linspace(1,array.shape[0],array.shape[0])
@@ -57,9 +61,9 @@ for filenr,file in enumerate(['estimates1.json','estimates2.json','estimates3.js
     A2 = ax2.scatter(lin[0:9],sortedMedians,label='medians of estimates')
     B2, = ax2.plot([lin[0],lin[8]],[trueSum,trueSum], label='true squared sum')
     ax2.legend(handles=[A2,B2])
-    ax2.set_xlabel('estimate number')
+    ax2.set_xlabel('median index')
     ax2.set_ybound(ymin[filenr-1],ymax[filenr-1])
-    title = "the 10 medians, when t = "+str(t)
+    title = "The 9 medians, when t = "+str(t)
     ax2.set_ylabel('squared sum')
     ax2.set_title(title)
     ax2.grid()
